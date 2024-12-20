@@ -1,0 +1,50 @@
+A TreeSet is a part of the Java Collections Framework and implements the Set interface. It stores elements in a sorted order, 
+unlike HashSet or LinkedHashSet, which do not guarantee any particular order. TreeSet is backed by a TreeMap, typically 
+a Red-Black Tree, which ensures that elements are sorted according to their natural ordering or by a custom comparator.
+
+Key Characteristics of TreeSet:
+Sorted Order: The elements are always stored in sorted (ascending) order.
+No Duplicates: Like other Set implementations, it doesn't allow duplicate elements.
+Navigable: TreeSet is a part of the NavigableSet interface, which allows for operations like retrieving the closest matches to
+ a given value.
+Performance: Operations like add, remove, and contains are performed in O(log n) time due to the underlying tree structure.
+Let's Implement a Basic Version of TreeSet:
+Here’s a simplified implementation of TreeSet from scratch using a Binary Search Tree (BST) structure. A full-fledged TreeSet 
+uses a self-balancing tree (like a Red-Black Tree), but for simplicity, we’ll use a basic BST to understand how elements are 
+inserted and stored in sorted order.
+
+
+Explanation:
+Binary Search Tree (BST):
+
+The MyTreeSet class is backed by a basic binary search tree (BST).
+Every time an element is added, it is placed in the tree based on its value (smaller values go to the left, larger values go to
+ the right).
+Add Operation:
+
+The add method ensures that the value is placed at the correct position in the BST while maintaining the order.
+Contains Operation:
+
+The contains method performs a binary search to check if a particular element exists in the tree.
+Remove Operation:
+
+The remove method deletes a node from the tree. It handles three cases: removing a node with no children, one child, or two
+ children. When deleting a node with two children, we replace it with the smallest value in its right subtree (in-order 
+ successor).
+Display Operation:
+
+The display method performs an in-order traversal to print the elements in ascending order.
+
+
+Key Operations and Complexity:
+Add: O(log n) due to the binary search tree insertion.
+Contains: O(log n) for searching the tree.
+Remove: O(log n) for deletion.
+In-Order Traversal: O(n) for displaying all elements.
+NavigableSet and TreeSet in Java:
+The TreeSet class in Java implements the NavigableSet interface, which provides additional methods like higher(), lower(),
+ ceiling(), and floor() to navigate through the set. In this simplified version, we focus on basic operations like add, remove,
+  and search.
+
+This implementation gives you a basic understanding of how a TreeSet works internally. A real TreeSet would use a 
+self-balancing tree like a Red-Black Tree to guarantee efficient insertion, removal, and lookup times.

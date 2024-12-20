@@ -1,0 +1,50 @@
+A LinkedHashSet is a combination of a HashSet and a doubly linked list, where the order of insertion is preserved. It provides 
+the following key features:
+
+Order of Elements: Unlike HashSet, which doesn't guarantee any order of elements, LinkedHashSet maintains the insertion order.
+
+No Duplicates: Like HashSet, it does not allow duplicate elements.
+Performance: The performance is similar to HashSet for basic operations like adding, removing, and checking for the existence 
+
+of elements.
+Key Differences Between HashSet and LinkedHashSet:
+Order: HashSet does not guarantee the order of elements, whereas LinkedHashSet preserves the insertion order.
+Underlying Structure: HashSet uses a hash table internally, while LinkedHashSet uses both a hash table and a doubly linked list
+
+ to maintain insertion order.
+Let's Implement a Simple LinkedHashSet from Scratch:
+
+We need to extend our basic HashSet implementation to include a doubly linked list. The linked list will maintain the order of
+
+ insertion. Each node in the linked list will store both the element and its links to the previous and next nodes.
+
+
+ Explanation:
+Doubly Linked List:
+
+We maintain a doubly linked list (Node class) to keep track of the insertion order of the elements.
+Each node in the linked list has pointers to its next and prev nodes.
+Add Operation:
+
+When an element is added, we first check if it exists in the hash table. If it doesn’t, we add it to the corresponding bucket 
+(as in the HashSet implementation) and append a new node to the tail of the linked list.
+Remove Operation:
+
+When an element is removed, we not only remove it from the hash table but also unlink it from the doubly linked list.
+Contains Operation:
+
+This method simply checks the hash table for the existence of the element.
+Clear Operation:
+
+We reset the bucket array and the doubly linked list to clear all elements.
+Display:
+
+The display function iterates through the doubly linked list and prints the elements in the order of insertion.
+
+Key Operations and Complexity:
+Add: O(1) on average, but in the worst case (with many collisions), it could be O(n).
+Remove: O(1) on average, O(n) in the worst case.
+Contains: O(1) on average, O(n) in the worst case.
+Insertion Order: Maintained via a doubly linked list.
+In this implementation, we created a basic LinkedHashSet from scratch that preserves the insertion order while also preventing 
+duplicate entries, similar to how the real Java LinkedHashSet works.

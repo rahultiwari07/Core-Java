@@ -1,0 +1,92 @@
+The HashSet in Java is one of the primary implementations of the Set interface. It is backed by a HashMap internally,
+ and it 
+stores elements in a hash table. The key feature of HashSet is that it does not allow duplicate elements and 
+provides
+ 
+constant-time performance for basic operations like add, remove, and contains, assuming the hash function disperses
+ elements 
+properly among the buckets.
+
+Key Points about HashSet:
+No duplicates: It ensures that no duplicate elements are stored.
+Unordered: The order of elements is not guaranteed, meaning it does not preserve the insertion order.
+Null values: HashSet allows one null element.
+Performance: Average time complexity for operations like insertion, deletion, and lookup is O(1) (constant time).
+
+
+Explanation of the Code:
+Creating a HashSet: We initialize a HashSet<String> to store a set of strings.
+Adding elements: We use the add() method to add elements to the HashSet. Duplicate elements (like "Apple" in the 
+example) are 
+automatically ignored.
+Checking existence: The contains() method checks whether a particular element is present in the set.
+Removing elements: The remove() method deletes an element if it exists in the set.
+Iteration: You can iterate over the HashSet using a for-each loop. The order of iteration is not guaranteed to be 
+the same as
+ the insertion order.
+Size: The size() method returns the number of elements in the set.
+Clearing: The clear() method removes all elements from the set.
+Internal Working of HashSet
+Internally, HashSet uses a HashMap for storing elements. When an element is added to a HashSet, it is actually
+ stored as a key 
+in the internal HashMap, with a default value of a constant object. This is why HashSet does not allow duplicate 
+values because
+ HashMap keys must be unique.
+
+The operations add, remove, and contains are typically performed in constant time (O(1)), but this depends on the 
+distribution
+ of the elements (hashcode) in the underlying hash table.
+
+Key Methods of HashSet
+Here are some key methods available in the HashSet class:
+
+add(E e): Adds the specified element to this set if it is not already present.
+remove(Object o): Removes the specified element from this set if it is present.
+contains(Object o): Returns true if this set contains the specified element.
+size(): Returns the number of elements in the set.
+isEmpty(): Returns true if this set contains no elements.
+clear(): Removes all the elements from the set.
+iterator(): Returns an iterator over the elements in this set.
+Example Use Cases
+Filtering duplicate values: HashSet is ideal when you need to remove duplicates from a collection of elements.
+
+Efficient lookups: If you frequently need to check for the existence of elements, a HashSet provides efficient 
+contains()
+ operations.
+
+
+ Summary
+The HashSet class is a powerful collection for managing unique, unordered elements with fast performance. It is widely used 
+for ensuring 
+there are no duplicate elements in collections, and its efficiency makes it a good choice when working with large
+ datasets.
+
+Explanation:
+Internal Structure:
+
+bucketArray is an array of linked lists. Each linked list represents a "bucket" where elements that hash to the same 
+index are stored.
+The getHash() method computes the index for a given key using a simple modulus operation. This is our custom hash
+ function.
+Add Operation:
+
+We compute the hash of the key and place it in the appropriate bucket (linked list). Before adding, we check if 
+the element already exists to prevent duplicates.
+Remove Operation:
+
+We locate the element by computing its hash, then remove it from the corresponding linked list, if present.
+Contains Operation:
+
+We compute the hash of the key, then check the corresponding linked list to see if the element is present.
+Clear Operation:
+
+We reset the bucketArray to a new array, effectively removing all elements from the HashSet.
+Size:
+
+The size() method returns the current number of elements in the HashSet.
+
+Key Operations and Complexity:
+Add: O(1) on average, but in the worst case (if many elements collide), it could be O(n).
+Remove: O(1) on average, O(n) in the worst case.
+Contains: O(1) on average, O(n) in the worst case.
+This custom HashSet implementation provides a simplified version of how Java's HashSet works behind the scenes, managing elements with hash functions and resolving collisions using linked lists.

@@ -1,0 +1,83 @@
+The HashMap class in Java is one of the most commonly used implementations of the Map interface. It provides the basic 
+functionality of a hash table, where data is stored in key-value pairs. HashMap allows for fast access, insertion, and 
+deletion of elements, making it ideal for scenarios where quick lookups are important.
+
+Key Features of HashMap:
+Key-Value Pairs: Stores data in key-value pairs, where each key is unique.
+Null Values: Allows one null key and multiple null values.
+Unordered: Does not maintain any specific order of elements.
+Performance: Provides constant time performance (O(1)) for get and put operations, assuming good hash function distribution.
+Non-Synchronized: Not thread-safe by default, meaning it should not be used in multi-threaded environments without external 
+synchronization.
+Load Factor and Capacity: The capacity is the number of buckets in the hash table, and the load factor is a measure of how full
+ the hash table is allowed to get before its capacity is automatically increased.
+Basic Structure:
+A HashMap uses a hash table data structure where the hash code of the key is used to determine the index in the internal array.
+ When two keys have the same hash code, they are stored in the same bucket using a linked list or binary tree (in Java 8 and 
+ above) to handle collisions.
+
+Commonly Used Methods:
+put(K key, V value): Adds or updates a key-value pair in the map.
+get(Object key): Retrieves the value associated with the key.
+remove(Object key): Removes the entry for the specified key.
+containsKey(Object key): Checks if a specific key is in the map.
+containsValue(Object value): Checks if a specific value is in the map.
+keySet(): Returns a set of all keys in the map.
+values(): Returns a collection of all values in the map.
+size(): Returns the number of key-value pairs in the map.
+isEmpty(): Checks if the map is empty.
+
+
+
+Performance Considerations:
+Time Complexity:
+
+get, put, remove operations have an average time complexity of O(1) if hash codes are evenly distributed.
+In the worst-case scenario (when all keys have the same hash code), the time complexity degrades to O(n), but Java 8 optimizes this by using a balanced tree structure in case of hash collisions.
+Initial Capacity: The initial capacity of a HashMap affects how often the underlying array is resized. If the initial capacity is too low, frequent resizing may impact performance.
+
+Load Factor: The load factor determines when the HashMap will resize itself. By default, the load factor is 0.75, meaning that when the HashMap is 75% full, it will resize its capacity to accommodate more elements. Lowering the load factor can reduce memory consumption but may increase the chance of hash collisions.
+
+Handling Hash Collisions:
+When two keys produce the same hash code (collision), HashMap uses a linked list or a balanced tree (for Java 8+) to store multiple values in the same bucket. This ensures that multiple keys with the same hash can still be differentiated based on their equality.
+
+Weaknesses of HashMap:
+Non-Thread Safe: HashMap is not synchronized. For multi-threaded environments, it’s recommended to use ConcurrentHashMap or synchronize the HashMap manually.
+Unordered: The iteration order is not guaranteed and may change as entries are added or removed.
+Internal Working of HashMap:
+Hashing: Each key is hashed using its hashCode(), and this hash is used to determine the bucket where the key-value pair is stored.
+Bucket: A bucket is a slot in the underlying array. Multiple key-value pairs can be stored in a single bucket if hash collisions occur.
+Load Factor: When the number of elements exceeds the load factor multiplied by the current capacity, the HashMap automatically resizes (doubles) the array to reduce collisions.
+
+
+When to Use HashMap:
+Fast Lookups: If you need fast, constant-time lookups for key-value pairs, HashMap is the go-to choice.
+Non-Threaded Environments: Since it's not synchronized, HashMap performs well in single-threaded applications where 
+concurrency isn't a concern.
+Next, we can explore more about LinkedHashMap, which retains insertion order, or move to TreeMap, which sorts the keys 
+naturally. Let me know which one you'd like to explore!
+
+
+Explanation of the Implementation:
+Hash Function:
+
+We use the hashCode() method of the key and compute the index for the bucket using key.hashCode() % table.length.
+To avoid negative indices, we use Math.abs().
+Chaining for Collision Handling:
+
+Each bucket in the array contains a linked list (chaining) to handle collisions (when multiple keys map to the same index).
+Resize Operation:
+
+When the number of entries exceeds the threshold (which is based on the load factor), we double the size of the table and rehash all the existing entries.
+Key Operations:
+
+put(K key, V value): Inserts a key-value pair into the hash table or updates the value if the key already exists.
+get(K key): Retrieves the value associated with the key.
+remove(K key): Removes a key-value pair from the map.
+Important Concepts:
+Load Factor: Determines when the hash table should resize. If the number of entries exceeds the load factor (e.g., 0.75), 
+the table size is doubled.
+Rehashing: When resizing, each entry is rehashed and placed into the new table. This ensures a better distribution of elements
+ and reduces collisions.
+This is a simplified version of the HashMap class, and Java's implementation in the JDK includes many optimizations and 
+improvements such as TreeNode structures for better performance when many collisions occur.

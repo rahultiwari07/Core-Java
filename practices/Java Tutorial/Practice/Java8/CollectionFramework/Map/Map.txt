@@ -1,0 +1,30 @@
+The Map interface in Java is part of the Java Collections Framework and represents a collection that maps keys to values.
+ A Map cannot contain duplicate keys, and each key can map to at most one value.
+
+Key Features of Map Interface:
+Unique Keys: Every key in a Map is unique, meaning that no two entries can have the same key.
+Key-Value Pairs: A Map stores data in key-value pairs (also known as entries).
+Null Values and Keys: Some implementations (like HashMap) allow one null key and multiple null values, while others (like TreeMap) do not permit null keys.
+Common Implementations:
+HashMap: Unordered and uses hash-based storage.
+LinkedHashMap: Maintains insertion order.
+TreeMap: Sorted map based on the natural order of keys or a custom comparator.
+Commonly Used Methods in Map Interface:
+put(K key, V value): Adds a key-value pair to the map.
+get(Object key): Retrieves the value corresponding to a given key.
+remove(Object key): Removes the entry for a specified key.
+containsKey(Object key): Checks if a specific key is present.
+containsValue(Object value): Checks if a specific value is present.
+keySet(): Returns a set of all keys in the map.
+values(): Returns a collection of all values in the map.
+entrySet(): Returns a set of all key-value pairs (map entries).
+
+
+Feature	HashMap	LinkedHashMap	TreeMap
+Order	No guaranteed order	Maintains insertion order	Keys sorted in natural order (or custom comparator)
+Performance	O(1) on average	O(1) on average	O(log n)
+Null Key/Value	Allows one null key and multiple null values	Same as HashMap	No null keys allowed
+Use Case	Best for fast access without ordering	Best for preserving insertion order	Best for keeping elements sorted by key
+Each of these Map implementations has different strengths and use cases, depending on whether you need fast access (HashMap), 
+
+insertion order (LinkedHashMap), or sorted keys (TreeMap).

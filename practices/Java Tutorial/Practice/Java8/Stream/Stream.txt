@@ -1,0 +1,4 @@
+Stream 
+filter -> takes Predicate as a parameter 
+Pridicate - a functional Interface which have a method named test which takes a Type parameter and return true or
+ false.

@@ -1,0 +1,37 @@
+A HashTable in Java is similar to a HashMap, but with some key differences. It is a legacy class that was part of the original 
+Java release, and it has the following characteristics:
+
+Key Characteristics of HashTable:
+Thread-Safe: Unlike HashMap, all methods of HashTable are synchronized, which makes it thread-safe. Multiple threads can access
+ the HashTable concurrently without causing inconsistencies.
+No Null Keys or Values: HashTable does not allow null as a key or value, whereas HashMap allows one null key and multiple null
+ values.
+Legacy Class: HashTable was part of the original Java 1.0 and is considered somewhat outdated compared to modern alternatives
+ like HashMap or ConcurrentHashMap.
+Performance: Due to its synchronized nature, HashTable may suffer from lower performance compared to HashMap in a 
+single-threaded environment.
+Let's implement a simplified version of HashTable from scratch. Since the primary difference between HashMap and HashTable
+ is thread safety, we will use synchronization for critical methods to ensure thread safety.
+
+
+ Key Points:
+Synchronization: All methods (put, get, remove, etc.) are synchronized, ensuring that only one thread can modify the hash table
+ at a time, making it thread-safe.
+
+Null Keys and Values: HashTable does not allow null keys or values, and this implementation explicitly throws a 
+NullPointerException if either is provided.
+
+Chaining for Collisions: Like in the HashMap example, we use a linked list (chaining) to handle collisions. Each index in the
+ array points to the head of a linked list of entries.
+
+Basic Operations:
+
+put(K key, V value): Adds a key-value pair or updates the value if the key already exists.
+get(K key): Retrieves the value for a key.
+remove(K key): Deletes a key-value pair and returns the removed value.
+containsKey(K key): Checks if the key exists in the table.
+Thread-Safe: Thanks to synchronization, this implementation can handle concurrent access by multiple threads without issues 
+like race conditions.
+
+This is a simplified HashTable implementation, and the actual Java HashTable class in the JDK is more sophisticated with 
+additional optimizations and features.

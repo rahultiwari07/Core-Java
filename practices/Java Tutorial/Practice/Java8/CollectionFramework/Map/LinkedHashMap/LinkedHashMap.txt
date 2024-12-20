@@ -1,0 +1,38 @@
+LinkedHashMap is a subclass of HashMap in Java that maintains a linked list of entries. This allows it to preserve the 
+insertion order (or access order, depending on how it's configured) of the elements, which distinguishes it from a regular 
+HashMap, where the order of elements is not guaranteed.
+
+Here are some key features of LinkedHashMap:
+
+Insertion Order: The order in which you insert elements is preserved.
+Access Order: It can also be configured to maintain access order, which means the most recently accessed elements move to the 
+end of the list.
+Performance: Like HashMap, the basic operations (put, get, remove) of LinkedHashMap have a time complexity of O(1).
+Doubly Linked List: Internally, LinkedHashMap maintains a doubly linked list across all entries. This allows it to preserve 
+the order while also offering efficient insertion and deletion.
+
+
+Key Points in the Implementation:
+Chaining for Collisions: Like HashMap, we handle collisions using chaining (linked lists), where each bucket in the array points to the head of a linked list.
+
+Doubly Linked List for Order Preservation:
+
+We use before and after pointers in the Entry class to maintain the insertion order.
+head points to the first entry in the list, and tail points to the last.
+When inserting new elements, we adjust the before and after pointers to maintain the correct order.
+Basic Operations:
+
+put(K key, V value): Inserts or updates a key-value pair while maintaining the insertion order.
+get(K key): Retrieves the value associated with a key.
+remove(K key): Deletes a key-value pair and adjusts the linked list to maintain the order.
+size(): Returns the number of entries in the LinkedHashMap.
+Insertion Order Preservation: The linked list helps in maintaining the insertion order, so when we iterate over the map, the 
+elements are returned in the order they were added.
+
+Differences Between HashMap and LinkedHashMap:
+Order: HashMap does not guarantee any specific order of elements, while LinkedHashMap preserves the order of insertion or 
+access.
+Performance: Due to the overhead of maintaining the linked list, LinkedHashMap can be slightly slower than HashMap for certain
+ operations.
+This implementation is a simplified version of Java's LinkedHashMap, with fewer optimizations but showing the core principles 
+of how order is preserved in a hash-based structure.
